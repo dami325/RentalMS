@@ -1,0 +1,40 @@
+package com.msa.rental.domain.model.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class RentalCardNo {
+
+    private String no;
+
+    /**
+     * 식별자를 만드는 로직
+     * @return
+     */
+    public static RentalCardNo createRentalCardNo(){
+        UUID uuid = UUID.randomUUID();
+        String year = String.valueOf(LocalDate.now().getYear());
+
+        String str = year + '-' + uuid;
+
+        RentalCardNo rentalCardNo = new RentalCardNo();
+        rentalCardNo.setNo(str);
+        return rentalCardNo;
+    }
+
+    public static RentalCardNo sample() {
+        return RentalCardNo.createRentalCardNo();
+    }
+
+    public static void main (String[] args) {
+        System.out.println(sample());
+    }
+
+}
