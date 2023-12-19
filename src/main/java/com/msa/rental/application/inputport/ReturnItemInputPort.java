@@ -29,7 +29,6 @@ public class ReturnItemInputPort implements ReturnItemUsecase {
 
         Item returnItem = new Item(returnDto.getItemId(), returnDto.getItemTitle());
 
-        rentalCard.returnItem(returnItem, LocalDate.now());
-        return RentalCardOutputDTO.mapToDTO(rentalCard);
+        return RentalCardOutputDTO.mapToDTO(rentalCard.returnItem(returnItem, LocalDate.now()));
     }
 }
